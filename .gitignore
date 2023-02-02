@@ -1,3 +1,4 @@
 env/
 migrations/
+instance/
 __pycache__/
