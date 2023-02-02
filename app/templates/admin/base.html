@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block body_before %}
+{% if not is_loggedin is false %}
+<nav>
+    <a href="{{ url_for('Admin.dashboard') }}">Dashboard</a>
+    <a href="{{ url_for('Admin.users') }}">Users</a>
+    <a href="{{ url_for('Admin.users',type='admin') }}">Admin Users</a>
+    <form action="{{ url_for('Admin.logout_admin') }}" method="POST">
+        <input type="submit" value="Logout"  style="font-size: 17px; text-decoration: underline; cursor: pointer;"/>
+    </form>
+</nav>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/settings.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="shadow-card">
+    <div class="form" style="width: 100%; box-shadow: 0px 0px 0px 0px;">
+        <a href="{{ url_for('Home.home_index') }}">&lt;&lt; Back to Home</a>
+        <h1 style="text-align:center;">Settings</h1>
+
+        <form action="{{ url_for('Settings.settings_index') }}" method="post">
+            {{ form1.csrf_token() }}
+            <div class="br"></div>
+            
+            <div class="label">
+                <h2>Name</h2>
+                {{ form1.name.label }}
+                {{ form1.name() }}
+                {% if form1.name.errors %}
+                    <div class="errors">
+                        {% for error in form1.name.errors %}
+                            <p>{{error}}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            {{ form1.update_name() }}
+        </form>
+
+        <form action="#" method="post">
+
+            <div class="br"></div>
+            <div class="label">
+                <h2>Email</h2>
+                {{ form2.email.label }}
+                {{ form2.email() }}
+            </div>
+            <div class="br"></div>
+
+        </form>
+
+        <form action="{{ url_for('Settings.settings_index') }}" method="post">
+            {{ form3.csrf_token() }}
+            
+            <div class="label" style="margin-bottom: 0px;">
+                <h2>Update password</h2>
+            </div>
+
+            <div class="label">
+                {{ form3.password.label }}
+                {{ form3.password() }}
+                {% if form3.password.errors %}
+                    <div class="errors">
+                        {% for error in form3.password.errors %}
+                            <p>{{error}}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="label">
+                {{ form3.new_password.label }}
+                {{ form3.new_password() }}
+                {% if form3.new_password.errors %}
+                    <div class="errors">
+                        {% for error in form3.new_password.errors %}
+                            <p>{{error}}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="btns">
+                {{ form3.update_password() }}
+                {{ form3.delete_account() }}
+            </div>
+
+            <div class="br"></div>
+
+        </form>
+
+        <form action="{{ url_for('Auth.logout') }}" method="POST" style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+            <div class="label">
+                <h2>Logout from this device</h2>
+            </div>
+
+            <input type="submit" class="w-btn" value="Logout" />
+        </form>
+    </div>
+</div>
+{% endblock %}

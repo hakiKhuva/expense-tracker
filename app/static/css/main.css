@@ -1,0 +1,219 @@
+@font-face {
+    font-family: "JosefinSans-Medium";
+    src: url("/static/fonts/JosefinSans-Medium.ttf");
+}
+
+:root {
+    --bg : #222;
+    --shade : #999;
+    --fg : rgb(0, 235, 90);
+    --fg1 : #fff;
+    --font : "JosefinSans-Medium";
+    --font-s : "JosefinSans-Medium";
+}
+
+* {
+    background-color: var(--bg);
+    color: var(--fg1);
+    font-family: var(--font);
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.header {
+    font-size: 19.5px;
+    color: var(--fg);
+    box-shadow: 0px 0px 1px 0px var(--fg1);
+    padding: 15px;
+    text-align: center;
+}
+
+.messages-s {
+    margin: 10px 0px;
+}
+
+.messages-s > .msg {
+    font-size: 17px;
+    margin: 5px 0px;
+    padding: 10px;
+    color: #fff;
+    border: 5px solid #fff;
+    border-left: 0px;
+    border-right: 0px;
+    width: 100vw;
+    max-width: calc( 100% - 20px );
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.messages-s > .msg-green {
+    border-color: rgb(0, 192, 74);
+}
+
+.messages-s > .msg-red {
+    border-color: rgb(250, 43, 32);
+}
+
+.messages-s .end-btn {
+    border: 0px;
+    padding: 0px;
+    margin: 2px 10px;
+    font-size: 26.5px;
+}
+
+.form {
+    box-shadow: 0px 0px 1px 0px var(--fg1);
+    width: 350px;
+    max-width: calc(100% - 50px);
+    padding: 25px;
+    margin: 25px auto;
+}
+
+.form > form,
+.form > form > .label {
+    display: flex;
+    flex-direction: column;
+}
+
+.form > form > .label {
+    margin: 15px 5px;
+}
+
+.form > form > .label > label {
+    font-size: 16px;
+    margin: 2px 0px;
+}
+
+.form > form > .label > input,
+.form > form > .label > select,
+.form > form > .label > textarea {
+    font-size: 18.5px;
+    padding: 10px;
+    border: 1px solid var(--fg1);
+    outline: none;
+    border-radius: 2px;
+}
+
+.form > form > .label > input:focus ,
+.form > form > .label > textarea:focus {
+    box-shadow: 0px 0px 0px 2px var(--fg);
+    border: 1px solid transparent;
+}
+
+.form > form input[type="submit"], .btn{
+    padding: 7px 10px;
+    font-size: 17px;
+    margin: 10px 2px;
+    background-color: var(--bg);
+    color: var(--fg);
+    border: 1.5px solid var(--fg);
+    border-radius: 3px;
+    transition: 200ms;
+}
+
+.form > form input:disabled {
+    border: 2px solid var(--shade);
+    color: var(--shade);
+}
+
+.form > form input[type="submit"]:hover,
+.form > form input[type="submit"]:focus,
+.btn:hover, .btn:focus {
+    color: var(--bg);
+    background-color: var(--fg);
+    transition: 150ms;
+    cursor: pointer;
+}
+
+.form > form > .label > .errors {
+    margin: 3px 0px;
+}
+
+.form > form > .label > .errors > p {
+    margin: 2px 0px;
+}
+
+.form > form > .label > .errors > p::before {
+    content: "*";
+}
+
+.form .note {
+    font-size: 15px;
+}
+
+.shadow-card {
+    padding: 20px;
+    margin: 20px auto;
+    width: calc(100% - 50px);
+    max-width: 850px;
+    border-radius: 10px;
+}
+
+.shadow-card,
+.shadow-card * {
+    background-color: #333;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-s {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.w-btn {
+    color: #fff !important;
+    border-color: #fff !important;
+    font-size: 17px;
+    padding: 15px 30px;
+}
+
+.w-btn:hover, .w-btn:focus {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+.footer {
+    width: calc( 100% - 100px );
+    border-top: 0.5px solid var(--fg1);
+    padding: 50px;
+    margin-top: 50px;
+}
+
+.footer > footer {
+    max-width: 1250px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer > footer > .part {
+    margin: 10px 20px;
+}
+
+.footer > footer > .part > .head {
+    font-size: 25px;
+}
+
+
+form .delete {
+    border-color: rgb(255, 19, 19) !important;
+    color: rgb(255, 43, 43) !important;
+}
+
+form .delete:hover,
+form .delete:focus {
+    background-color: rgb(255, 19, 19) !important;
+    color: #fff !important;
+}

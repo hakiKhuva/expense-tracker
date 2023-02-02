@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/statements.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="shadow-card" id="expense-card">
+    <div id="name">Hello, {{ user.name }}</div>
+    <div id="top">
+        <div class="part" style="display: flex;flex-direction: column;align-items:center;justify-content:center;">
+            <div id="balance">
+                <span id="currency">&#8377;</span>
+                <span id="num">{{ user.account_balance }}</span>
+            </div>
+        </div>
+        <div class="part">
+            <div id="operations">
+                <a class="btn-a" href="{{ url_for('Home.new_statement') }}">Add statement</a>
+                <a class="btn-a" href="{{ url_for('Home.statements') }}">View statements</a>
+                <a class="btn-a" href="{{ url_for('Settings.settings_index') }}">Settings</a>
+            </div>
+        </div>
+    </div>
+    <div id="bottom" class="part">
+        <h1>Last statements</h1>
+        <div id="statements">
+            {% if user.statements %}
+                {% for statement in user.statements %}
+                    <a href="{{ url_for('Home.specific_statement', statement_id=statement.id) }}" class="statement">
+                        <div>
+                            <div class="desc">{{statement.desc}}</div>
+                            <div class="at">{{statement.at}}</div>
+                        </div>
+                        <div class="amount">&#8377;{{statement.amount}}</div>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <p>You've not added any statements yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

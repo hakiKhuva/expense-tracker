@@ -1,0 +1,46 @@
+{% extends 'admin/base.html' %}
+
+{% block body %}
+<div class="container form">
+    <h1>User's details</h1>
+        <form method="POST">
+            {{ form.csrf_token() }}
+            <div class="label">
+                {{ form.name.label }}
+                {{ form.name() }}
+                {% if form.name.errors %}
+                <div class="errors">
+                    {% for error in form.name.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="label">
+                {{ form.email.label }}
+                {{ form.email() }}
+                {% if form.email.errors %}
+                <div class="errors">
+                    {% for error in form.email.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="label">
+                {{ form.password.label }}
+                {{ form.password() }}
+                {% if form.password.errors %}
+                <div class="errors">
+                    {% for error in form.password.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            {{ form.update_account() }}
+            {{ form.delete_account() }}
+        </form>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+form .br {
+    border-bottom: 2px solid var(--fg1) !important;
+    margin: 15px 0px;
+}
+
+form input[type="submit"]{
+    width: max-content;
+    padding: 10px 30px !important;
+    border-radius: 30px !important;
+}

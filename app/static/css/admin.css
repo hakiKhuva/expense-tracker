@@ -1,0 +1,92 @@
+:root {
+    --bg : #fff;
+    --shade : #444;
+    --fg : rgb(0, 65, 25);
+    --fg1 : #000;
+    --max-w : 1250px;
+}
+
+.head {
+    font-size: 22.5px;
+    margin: 20px 0px;
+}
+
+.container {
+    max-width: var(--max-w);
+    margin: auto;
+}
+
+.flexbox {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.flex-column {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .content {
+    box-shadow: 0px 0px 1px 0px var(--fg);
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.container .image {
+    border-radius: 5px;
+}
+
+table {
+    margin: 50px;
+    width: 100vw;
+    max-width: calc(100% - 110px);
+}
+
+table, table tr, table td {
+    /* border: 1px solid var(--fg); */
+    box-shadow: 0px 0px 1px 0px var(--fg1);
+    border-collapse: collapse;
+}
+
+table td, table th {
+    padding: 15px;
+    font-size: 18px;
+}
+
+nav {
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: calc(100%);
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    position: sticky;
+}
+
+nav,nav * {
+    background-color: #ddd;
+}
+
+nav > a, nav input[type="submit"] {
+    display: block;
+    padding: 25px 20px;
+    transition: 200ms;
+    border: 0px;
+    border-bottom: 1px solid #000;
+}
+
+nav > a:hover, nav input[type="submit"]:hover {
+    filter: invert(100%);
+    transition: 400ms;
+}

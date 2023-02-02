@@ -1,0 +1,38 @@
+{% extends "admin/base.html" %}
+
+{% block body %}
+<div class="container">
+    <h1 style="text-align: center;">Dashboard</h1>
+
+    <table>
+        <tr>
+            <th colspan="2">Application Statistics</th>
+        </tr>
+        {% for key, value in table_data.items() %}
+        <tr>
+            <td>
+                {{key}}
+            </td>
+            <td>
+                {{value}}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="flexbox flex-column">
+        <div class="content">
+            <img src="data:image/png;base64,{{browser_pie_chart}}" alt="Browser usage pie chart" class="image">
+        </div>
+
+        <div class="content">
+            <img src="data:image/png;base64,{{operating_system_chart}}" alt="Browser usage pie chart" class="image">
+        </div>
+
+        <div class="content">
+            <img src="data:image/png;base64,{{visits_line_chart}}" alt="Browser usage pie chart" class="image">
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="form">
+    <a href="{{ url_for('Home.home_index') }}">&lt;&lt; Back to Home</a>
+    <h1>Add Statement</h1>
+    <form action="{{ url_for('Home.new_statement') }}" method="post">
+        {{ form.csrf_token() }}
+        <div class="label">
+            {{ form.amount.label }}
+            {{ form.amount() }}
+            {% if form.amount.errors %}
+                <div class="errors">
+                    {% for error in form.amount.errors %}
+                        <p>{{error}}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="label">
+            {{ form.description.label }}
+            {{ form.description() }}
+            {% if form.description.errors %}
+                <div class="errors">
+                    {% for error in form.description.errors %}
+                        <p>{{error}}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="label">
+            {{ form.datetime_data.label }}
+            {{ form.datetime_data() }}
+            {% if form.datetime_data.errors %}
+                <div class="errors">
+                    {% for error in form.datetime_data.errors %}
+                        <p>{{error}}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        {{ form.expense }}
+        {{ form.income }}
+    </form>
+</div>
+{% endblock %}

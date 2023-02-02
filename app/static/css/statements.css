@@ -1,0 +1,113 @@
+#statements {
+    display: flex;
+    flex-direction: column;
+}
+
+#statements > .statement {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 2.5px;
+    padding: 20px 15px;
+    box-shadow: 0px 0px 1px 0px var(--fg1);
+    border-radius: 5px;
+    width: 100%;
+    max-width: calc(100% - 5px - 30px) !important;
+    overflow: auto;
+}
+
+#statements > .statement,
+#statements > .statement * {
+    background-color: #424242;
+    text-decoration: none;
+}
+
+#statements > .statement:hover {
+    box-shadow: 0px 0px 2px 0px var(--fg1);
+}
+
+#statements > .statement .desc {
+    font-size: 22.5px;
+    margin-bottom: 2.5px;
+}
+
+#statements > .statement .at {
+    font-size: 12.5px;
+    margin-top: 5px;
+}
+
+#statements > .statement .amount {
+    font-size: 22.5px;
+    margin-top: 15px;
+    width: auto;
+    text-align: center;
+}
+
+@media (max-width:650px) {
+    #statements > .statement {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #statements > .statement .amount {
+        align-self: flex-end;
+
+    }
+}
+
+.details-e {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    margin: 50px 0px;
+}
+
+.details-e > .part-d {
+    padding: 25px;
+    border: 0px;
+    box-shadow: 0px 0px 1px 0px var(--fg1);
+    border-radius: 5px;
+    margin: 10px;
+    max-width: calc( 100% - 70px);
+    overflow: hidden;
+    min-width: calc(100% / 2.5);
+}
+
+.details-e > .part-d,
+.details-e > .part-d * {
+    background-color: #272727;
+}
+
+.details-e > .part-d > .head {
+    font-size: 20px;
+    margin: 10px 3px;
+}
+
+.details-e > .part-d > .money {
+    font-size: 30px;
+    margin: 10px 3px;
+}
+
+.details-e > .part-d > .money > span {
+    margin: 2px 3px;
+}
+
+#type {
+    font-size: 17px;
+    padding: 20px 30px;
+    background-color: #262626;
+    width: 100%;
+    margin-bottom: 25px;
+    border-radius: 50px;
+    text-align: center;
+}
+
+@media (max-width:770px) {
+    .details-e {
+        flex-direction: column;
+    }
+}

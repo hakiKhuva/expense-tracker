@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="form">
+    <h1>Login to account</h1>
+    <form action="{{ url_for('Auth.auth_index') }}" method="post">
+        {{ form.csrf_token }}
+        <div class="label">
+            {{ form.email.label }}
+            {{ form.email }}
+            {% if form.email.errors %}
+                <div class="errors">
+                    {% for error in form.email.errors %}
+                        <p>{{error}}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="label">
+            {{ form.password.label }}
+            {{ form.password }}
+            {% if form.password.errors %}
+                <div class="errors">
+                    {% for error in form.password.errors %}
+                        <p>{{error}}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="label">
+            <small class="note">*By clicking below/creating new account you agreed to our privacy policy and terms of use to this website</small>
+        </div>
+        {{ form.submit }}
+    </form>
+</div>
+{% endblock %}

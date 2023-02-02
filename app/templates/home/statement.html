@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/settings.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="shadow-card">
+    <div class="form" style="width: 100%; box-shadow: 0px 0px 0px 0px;">
+        <a href="{{ url_for('Home.home_index') }}">&lt;&lt; Back to Home</a>
+        <h1>Statement details</h1>
+        <form action="{{ url_for('Home.specific_statement', statement_id=statement_id) }}" method="post">
+            {{ form.csrf_token() }}
+            <div class="label">
+                {{ form.amount.label }}
+                {{ form.amount() }}
+                {% if form.amount.errors %}
+                    <div class="errors">
+                        {% for error in form.amount.errors %}
+                            <p>{{error}}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="label">
+                {{ form.description.label }}
+                {{ form.description() }}
+                {% if form.description.errors %}
+                    <div class="errors">
+                        {% for error in form.description.errors %}
+                            <p>{{error}}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="label">
+                {{ form.datetime_data.label }}
+                {{ form.datetime_data() }}
+                {% if form.datetime_data.errors %}
+                    <div class="errors">
+                        {% for error in form.datetime_data.errors %}
+                            <p>{{error}}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="btns">
+                {{ form.expense }}
+                {{ form.income }}
+                {{ form.delete_statement }}
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

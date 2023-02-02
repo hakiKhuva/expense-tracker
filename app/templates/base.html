@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Expense-Tracker</title>
+    {% endif %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    {% block head %}
+    {% endblock %}
+
+    <script>
+        function remove_message(ele){
+            ele.parentElement.parentElement.removeChild(ele.parentElement)
+        }
+    </script>
+</head>
+<body>
+    <div class="root">
+        <header class="header" translate="no">
+            Expense-Tracker
+        </header>
+        {% with msgs = get_flashed_messages(with_categories=true) %}
+            {% if msgs %}
+            <div class="messages-s">
+                {% for cat, msg in msgs %}
+                    <div class="msg msg-{{cat}}">
+                        <span>{{msg}}</span>
+                        <button type="button" class="end-btn" onclick="remove_message(this)" title="Close this message">&times;</button>
+                    </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+        <div class="content">
+            {% block body_before %}
+            {% endblock %}
+            {% block body %}
+            {% endblock %}
+        </div>
+        {% if footer is true %}
+        <div class="footer">
+            <footer>
+                <div class="part">
+                    <div class="head">Expense Tracker</div>
+                    <div class="body">
+                        <p>&copy; 2022 - All rights reserved.</p>
+                    </div>
+                </div>
+
+                <div class="part">
+                    <div class="body" style="display: flex;flex-direction: row; flex-wrap: wrap;">
+                        <a href="about" class="btn w-btn" style="display: block;">About us</a>
+                        <a href="contact" class="btn w-btn" style="display: block;">Contact us</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

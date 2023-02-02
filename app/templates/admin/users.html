@@ -1,0 +1,83 @@
+{% extends "admin/base.html" %}
+
+{% block body %}
+<div class="container">
+    <h1 style="text-align: center;margin-bottom: 50px;">{{page_title}} data</h1>
+    <hr>
+
+    <div class="container" style="display: flex; align-items: flex-start;justify-content: space-around;">
+        <div>Total users : {{ users_count }}</div>
+        <div>Users per page : {{ users_per_page }}</div>
+        <div>Page count : {{ page_count }}</div>
+        <details>
+            <summary>Change users per page</summary>
+            <div class="form">
+                <form method="GET">
+                    <div class="label">
+                        <label for="upp">Users per page</label>
+                        <input type="number" name="upp" id="upp" placeholder="Enter number of users" />
+                    </div>
+                    <input type="submit" value="Update">
+                </form>
+            </div>
+        </details>
+
+        <details>
+            <summary>Search user</summary>
+            <div class="form">
+                <form method="GET" action="{{ url_for(request.endpoint) }}">
+                    <input type="hidden" name="type" value="{{page_title|lower}}">
+                    <div class="label">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Enter email">
+                    </div>
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+        </details>
+    </div>
+    <hr>
+    
+    {% if users %}
+    <table>
+        <tr>
+            {% if page_title == "Admin" %}
+                <th>Username</th>
+            {% else %}
+                <th>Name</th>
+            {% endif %}
+
+            <th>Email</th>
+            <th>Session id</th>
+            <th>Actions</th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                {% if page_title == "Admin" %}
+                    <td>{{user.username}}</td>
+                {% else %}
+                    <td>{{user.name}}</td>
+                {% endif %}
+                <td>{{user.email}}</td>
+                <td>{{user.session_id}}</td>
+                <td>
+                    <a href="{{ url_for('Admin.specific_user', member_type=page_title|lower,id=user.id, email=user.email) }}">Edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div style="display: flex; align-items: center;">
+        {% if prev_btn %}
+            <a href="{{ url_for('Admin.users', page=current_page, upp=users_per_page) }}" style="width: max-content;" class="form">Previous page</a>
+        {% endif %}
+        {% if next_btn %}
+            <a href="{{ url_for('Admin.users', page=current_page+2, upp=users_per_page) }}" style="width: max-content;" class="form">Next page</a>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="form">
+        <strong>User(s) doesn't exists on this page</strong>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
