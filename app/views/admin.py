@@ -15,7 +15,7 @@ def dashboard():
     if 'admin-sign-id' not in session:
         return redirect(url_for(".admin_login"))
     
-    admin = Admin.query.filter(Admin.session_id == session.get("admin-sign-id")).first()
+    admin = Admin.query.filter(Admin.session_id == session.get("admin-sign-id")).first_or_404()
 
     name = admin.username
 
