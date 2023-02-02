@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request
 from flask_migrate import Migrate
 from user_agents import parse
@@ -11,8 +12,8 @@ migrate = Migrate(render_as_batch=True)
 def create_app():
     app = Flask(__name__)
 
-    app.config["SECRET_KEY"] = "NOTHING_IS_SECRET"
-    app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+mysqlconnector://root:@localhost/expense_tracker?collation=utf8mb4_general_ci"
+    app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "NOTHING_IS_SECRET")
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URI", "sqlite:///master.sqlite3")
     app.config["PERMANENT_SESSION_LIFETIME"] = datetime.timedelta(days=7)
 
     db.init_app(app)
