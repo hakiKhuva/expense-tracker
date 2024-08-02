@@ -7,7 +7,7 @@ from functools import wraps
 
 def get_login() -> bool:
     """
-    returns wheather user is logged in or not
+    returns whether user is logged in or not
     """
     sign_id = session.get("session-sign-id")
     if sign_id:
@@ -22,7 +22,7 @@ def get_login() -> bool:
 
 def get_admin_login() -> bool:
     """
-    returns wheather user is logged in or not
+    returns whether user is logged in or not
     """
     sign_id = session.get("admin-sign-id")
     if sign_id:
